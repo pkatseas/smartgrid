@@ -18,14 +18,8 @@ public class CustomAggregatorPolicy implements AggregatorPolicy {
 		price = 50.0;
 	}
 
-	
-	public void setup(Aggregator aggregator) {
-		aggregator.setElectricitySupply(supply);
-		aggregator.setElectricityPrice(price);
-	}
-	
 	public void tick(Date date, Aggregator aggregator) {
-		Map<Integer, Double> demandMap = aggregator.getHouseHoldDemandMap();
+		Map<Integer, Double> demandMap = aggregator.getHouseholdDemandMap();
 		
 		double totalDemand = 0;
 		for (Double e: demandMap.values() ) totalDemand +=e;
@@ -63,7 +57,6 @@ public class CustomAggregatorPolicy implements AggregatorPolicy {
 		if(totalDemand >= 5000) {
 			aggregator.setElectricitySupply(5100.0);
 			aggregator.setElectricityPrice(250.0);
-		
 		}
 	}
 
@@ -77,6 +70,14 @@ public class CustomAggregatorPolicy implements AggregatorPolicy {
 	
 	public String getPolicyAuthor() {
 		return PolicyAuthor;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public Double getSupply() {
+		return supply;
 	}
 
 }
