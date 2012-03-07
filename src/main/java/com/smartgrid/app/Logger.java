@@ -256,6 +256,8 @@ public class Logger {
 	 *            the current electricity supply.
 	 * @param overallDemand
 	 *            the current overall demand from all households.
+	 * @param price
+	 *            the current electricity price
 	 * 
 	 * @return true if the query is executed correctly, false otherwise.
 	 */
